@@ -1,0 +1,156 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.0
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Nov 11, 2023 at 05:33 PM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.6
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `gym`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `billing`
+--
+
+CREATE TABLE `billing` (
+  `id` varchar(20) NOT NULL,
+  `name` varchar(20) NOT NULL,
+  `date` varchar(20) NOT NULL,
+  `amount` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `billing`
+--
+
+INSERT INTO `billing` (`id`, `name`, `date`, `amount`) VALUES
+('1', 'BillAzam', '12-06-2022', '5000'),
+('1', 'Taha Azam', '12-06-2022', '5000'),
+('2', 'Sara', '12-06-2022', '45000');
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `coach`
+--
+
+CREATE TABLE `coach` (
+  `id` int(20) NOT NULL,
+  `name` varchar(20) NOT NULL,
+  `date` varchar(20) NOT NULL,
+  `experience` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `coach`
+--
+
+INSERT INTO `coach` (`id`, `name`, `date`, `experience`) VALUES
+(1, 'John', '12-06-2002', '2'),
+(2, 'Mary', '12-06-2002', '3'),
+(3, 'Amanda', '12-06-2002', '4'),
+(4, 'Sherif', '12-06-2002', '5');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `coach`
+--
+ALTER TABLE `coach`
+  ADD PRIMARY KEY (`id`);
+COMMIT;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `member`
+--
+
+CREATE TABLE `member` (
+  `id` varchar(20) NOT NULL,
+  `name` varchar(20) NOT NULL,
+  `date` varchar(20) NOT NULL,
+  `dob` varchar(20) NOT NULL,
+  `phone` varchar(20) NOT NULL,
+  `coach` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `member`
+--
+
+INSERT INTO `member` (`id`, `name`, `date`, `dob`, `phone`, `coach`) VALUES
+('1', 'Taayyab', '06 August 2012', '21-july-1998', '03422506772', 'john'),
+('2', 'Henry', '06 August 2012', '21-December-2000', '07862244252', 'Sherif'),
+('3', 'Joy', '06 August 2012', '21-May-2002', '01110972525', 'Amanda');
+COMMIT;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `receptionist`
+--
+
+CREATE TABLE `receptionist` (
+  `id` int(20) NOT NULL,
+  `name` varchar(20) NOT NULL,
+  `date` varchar(20) NOT NULL,
+  `address` varchar(20) NOT NULL,
+  `phone` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `receptionist`
+--
+
+INSERT INTO `receptionist` (`id`, `name`, `date`, `address`, `phone`, `id`, `name`, `date`, `experience`) VALUES
+(1, 'Srasvati', '12-06-2002', 'sa - 140, Maputo', 'sada', 1, 'John', '12-06-2002', '2'),
+(2, 'hyh', '10-07-2004', 'tyy - 060, Sythn', 'Thyn', 2, 'Mary', '12-06-2002', '3'),
+(2, 'Amanda', '12-06-2002', 'ly - 890, Nighera', 'Brey', 2, 'Mary', '12-06-2002', '3'),
+(1, 'Tythenr', '23-07-2005', 'zn - 220, Zwandl', 'Ferya', 1, 'John', '12-06-2002', '2'),
+(3, 'Sherif', '12-06-2002', 'hl - 789, Amnrhl', 'rtyn', 3, 'Amanda', '12-06-2002', '4'),
+(4, 'Mary', '12-06-2002', 'tyh - 540, knnyth', 'wljyh', 4, 'Sherif', '12-06-2002', '5');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `receptionist`
+--
+ALTER TABLE `receptionist`
+  ADD KEY `Test` (`id`);
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `receptionist`
+--
+ALTER TABLE `receptionist`
+  ADD CONSTRAINT `Test` FOREIGN KEY (`id`) REFERENCES `coach` (`id`);
+COMMIT;
